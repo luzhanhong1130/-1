@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- API Key 通过 EncryptedSharedPreferences 加密存储，可参与备份 -->
+    <include domain="sharedpref" path="llmhub_secure_prefs.xml" />
+    <include domain="database" path="llmhub.db" />
+</full-backup-content>

@@ -1,0 +1,174 @@
+<resources>
+    <string name="app_name">LLMHub</string>
+
+    <!-- 底部导航 -->
+    <string name="nav_chat">对话</string>
+    <string name="nav_models">模型</string>
+    <string name="nav_keys">密钥</string>
+    <string name="nav_stats">统计</string>
+
+    <!-- 通用 -->
+    <string name="action_save">保存</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_delete">删除</string>
+    <string name="action_edit">编辑</string>
+    <string name="action_add">添加</string>
+    <string name="action_confirm">确定</string>
+    <string name="action_close">关闭</string>
+    <string name="action_retry">重试</string>
+    <string name="action_copy">复制</string>
+    <string name="action_refresh">刷新</string>
+    <string name="empty_hint">暂无内容</string>
+    <string name="loading">加载中…</string>
+
+    <!-- 聊天 -->
+    <string name="chat_input_hint">输入消息…</string>
+    <string name="chat_send">发送</string>
+    <string name="chat_stop">停止</string>
+    <string name="chat_new_session">新对话</string>
+    <string name="chat_session_default_title">新对话</string>
+    <string name="chat_assistant_reply_error">请求失败：%1$s</string>
+    <string name="chat_error_unknown">发生未知错误，请重试</string>
+    <string name="chat_empty_title">开始一段新对话</string>
+    <string name="chat_empty_subtitle">从顶部选择模型，输入消息即可对话</string>
+    <string name="chat_select_model">选择模型</string>
+    <string name="chat_no_model_hint">请先在「模型」中配置一个模型</string>
+    <string name="chat_no_model_dropdown">尚未配置模型，请到「模型」页添加</string>
+    <string name="chat_history_title">历史会话</string>
+    <string name="chat_no_sessions">暂无历史会话</string>
+    <string name="chat_generating">生成中…</string>
+    <string name="chat_rename_title">重命名会话</string>
+    <string name="chat_delete_title">删除会话</string>
+    <string name="chat_delete_message">删除后无法恢复，确认删除该会话？</string>
+    <string name="chat_rename_hint">新名称</string>
+
+    <!-- 模型 -->
+    <string name="models_title">模型管理</string>
+    <string name="models_add">添加模型</string>
+    <string name="models_edit">编辑模型</string>
+    <string name="models_field_name">模型名称</string>
+    <string name="models_field_provider">服务商</string>
+    <string name="models_field_model_id">模型 ID</string>
+    <string name="models_field_base_url">接口地址 (Base URL)</string>
+    <string name="models_field_api_key_ref">关联密钥</string>
+    <string name="models_field_temperature">温度 (Temperature)</string>
+    <string name="models_field_max_tokens">最大输出 Token</string>
+    <string name="models_field_price_input">输入单价 (¥/1K tokens)</string>
+    <string name="models_field_price_output">输出单价 (¥/1K tokens)</string>
+    <string name="models_field_billing_kind">Billing Endpoint 种类</string>
+    <string name="models_action_reset_price">从内置定价表重置</string>
+    <string name="models_reset_price_toast">已按最新 modelId 重置默认定价</string>
+    <string name="models_set_default">设为默认</string>
+    <string name="models_default_badge">默认</string>
+    <string name="models_empty_title">尚无模型</string>
+    <string name="models_empty_subtitle">点右下角添加第一个模型配置</string>
+    <string name="models_no_keys_hint">尚无可用密钥，请先到「密钥」页添加</string>
+    <string name="models_card_meta">密钥：%1$s  ·  ¥%2$.4f/%3$.4f per 1K</string>
+    <string name="models_err_name_required">请填写模型名称</string>
+    <string name="models_err_model_id_required">请填写模型 ID</string>
+    <string name="models_err_api_key_required">请选择关联密钥</string>
+    <string name="models_err_temperature_range">温度范围 0 ~ 2</string>
+    <string name="models_err_max_tokens_range">Token 范围 1 ~ 32000</string>
+    <string name="models_err_price_range">单价须 ≥ 0</string>
+
+    <!-- 密钥 -->
+    <string name="keys_title">密钥管理</string>
+    <string name="keys_add">添加密钥</string>
+    <string name="keys_edit">编辑密钥</string>
+    <string name="keys_field_name">备注名称</string>
+    <string name="keys_field_provider">所属服务商</string>
+    <string name="keys_field_value">API Key</string>
+    <string name="keys_field_value_new">新值（留空则保留原 Key）</string>
+    <string name="keys_show">显示</string>
+    <string name="keys_hide">隐藏</string>
+    <string name="keys_masked">••••••••</string>
+    <string name="keys_copy_to_clipboard">已复制到剪贴板</string>
+    <string name="keys_empty_title">尚无密钥</string>
+    <string name="keys_empty_subtitle">点右下角添加第一个 API Key</string>
+
+    <!-- 统计 -->
+    <string name="stats_title">消耗统计</string>
+    <string name="stats_range_today">今日</string>
+    <string name="stats_range_7d">近 7 天</string>
+    <string name="stats_range_30d">近 30 天</string>
+    <string name="stats_range_all">全部</string>
+
+    <string name="stats_model_selector_hint">选择模型</string>
+    <string name="stats_model_global">全局汇总</string>
+    <string name="stats_model_global_subtitle">展示所有模型合计</string>
+    <string name="stats_model_deleted">已删除模型</string>
+
+    <string name="stats_total_requests">请求次数</string>
+    <string name="stats_total_sessions">会话数</string>
+    <string name="stats_total_input_tokens">输入 Token</string>
+    <string name="stats_total_output_tokens">输出 Token</string>
+    <string name="stats_estimated_cost">估算费用</string>
+    <string name="stats_success_rate">成功率</string>
+    <string name="stats_avg_latency">平均延迟</string>
+    <string name="stats_p50_latency">P50 延迟</string>
+    <string name="stats_p95_latency">P95 延迟</string>
+
+    <string name="stats_by_model">按模型分布</string>
+    <string name="stats_no_data">暂无统计数据</string>
+    <string name="stats_empty_hint">去对话页发条消息试试</string>
+    <string name="stats_request_count">请求 %1$d 次</string>
+    <string name="stats_session_count">会话 %1$d 个</string>
+    <string name="stats_input_tokens">入 %1$d</string>
+    <string name="stats_output_tokens">出 %1$d</string>
+    <string name="stats_success">成功 %1$d · 失败 %2$d</string>
+    <string name="stats_latency_ms">延迟 %1$d ms</string>
+    <string name="stats_success_rate_val">%1$.1f%%</string>
+    <string name="stats_success_rate_na">—</string>
+
+    <string name="stats_detail_title">模型详情</string>
+    <string name="stats_daily_title">按日消耗</string>
+    <string name="stats_daily_date_fmt">%1$tm/%1$td</string>
+    <string name="stats_breakdown_title">成功 / 失败分类</string>
+    <string name="stats_breakdown_success">成功 %1$d 次</string>
+    <string name="stats_breakdown_fail_other">失败 %1$d 次</string>
+
+    <string name="stats_compare_title">本地 vs 后台用量对比</string>
+    <string name="stats_compare_side_local">本地记录</string>
+    <string name="stats_compare_side_remote">后台用量</string>
+    <string name="stats_compare_empty_title">后台用量未启用</string>
+    <string name="stats_compare_empty_subtitle">请在「模型」中编辑该模型，将 Billing Endpoint 种类从「暂不启用」切换为你使用的平台（如 One API 中转），保存后即可从官方后台拉取真实用量。</string>
+    <string name="stats_compare_go_setup">前往模型编辑</string>
+    <string name="stats_compare_last_sync">最后同步：%1$s</string>
+    <string name="stats_compare_sync_now">立即刷新</string>
+    <string name="stats_compare_syncing">同步中…</string>
+    <string name="stats_compare_loading">正在同步后台数据…</string>
+    <string name="stats_compare_error">同步失败：%1$s</string>
+    <string name="stats_compare_diff_low">差值 %.1f%% · 一致</string>
+    <string name="stats_compare_diff_mid">差值 %.1f%% · 存在偏差</string>
+    <string name="stats_compare_diff_high">差值 %.1f%% · 偏差较大</string>
+
+    <!-- 统计：后台抓取状态横幅 -->
+    <string name="stats_banner_not_supported_title">该平台暂不支持用量抓取</string>
+    <string name="stats_banner_not_supported_sub">请在「模型」中切换 Billing Endpoint 种类，或稍后再试。</string>
+    <string name="stats_banner_auth_title">API Key 鉴权失败</string>
+    <string name="stats_banner_auth_sub">请检查关联密钥是否有效、是否已开通账单读取权限。</string>
+    <string name="stats_banner_rate_title">平台限流</string>
+    <string name="stats_banner_rate_sub">短时间请求过多，请 1–2 分钟后再同步。</string>
+    <string name="stats_banner_network_title">网络异常</string>
+    <string name="stats_banner_network_sub">请检查 Wi-Fi / 移动网络或切换接入点后重试。</string>
+    <string name="stats_banner_parse_title">后台数据解析失败</string>
+    <string name="stats_banner_parse_sub">平台接口可能已变更，建议升级 App 或向作者反馈。</string>
+    <string name="stats_banner_unknown_title">同步失败</string>
+    <string name="stats_banner_unknown_sub">发生未知错误，请稍后重试。</string>
+    <string name="stats_banner_manual_reference">已查看网页对账，保留为参考视图</string>
+    <string name="stats_banner_try_web_login">试试网页登录对账</string>
+
+    <!-- 统计：Web 登录对账 Chip / Switch / source 标签 -->
+    <string name="stats_web_login_chip">网页登录对账</string>
+    <string name="stats_web_card_trail">网页对账</string>
+    <string name="stats_web_mode_api">默认 API 直连</string>
+    <string name="stats_web_mode_web">默认网页登录</string>
+    <string name="stats_web_source_web">网页抽取</string>
+    <string name="stats_web_source_manual">参考视图</string>
+    <string name="stats_web_keep_reference_subtitle">没有成功写入后台聚合值；仅保留本次页面访问记录，方便下次肉眼对账。</string>
+
+    <!-- 错误 -->
+    <string name="err_no_api_key">该模型未关联 API Key，请先在「密钥」中添加</string>
+    <string name="err_network">网络异常，请检查连接</string>
+    <string name="err_invalid_response">响应解析失败</string>
+</resources>

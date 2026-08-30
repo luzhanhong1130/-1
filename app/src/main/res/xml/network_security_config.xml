@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  网络安全配置：
+
+  - 默认强制 HTTPS（base-config cleartextTrafficPermitted="false"）。
+  - 针对自建 One API 中转常见部署场景放行明文域名白名单：
+      • 127.0.0.1 / localhost ：本机部署（USB 共享 + 反向代理）
+      • 10.0.2.2              ：Android 模拟器访问宿主机 loopback 的别名
+      • 10.0.0.0/8 / 192.168.0.0/16 / 172.16.0.0/12：局域网内网部署（自建中转/家庭实验室）
+    若用户需要其它明文域名，可在 App 代码中再扩展 domain-config（或直接改为 HTTPS 部署）。
+  - 证书：默认使用系统证书；对自签证书不放开（让用户自己加证书到系统 User credentials）。
+  - CLEARTEXT 仅针对 HTTP，HTTPS 仍严格校验（不做 permissive 开关）。
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- 内网 / 自建中转的明文放行白名单（常见部署场景）。 -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">127.0.0.1</domain>
+        <domain includeSubdomains="true">10.0.2.2</domain>
+        <!-- A 类私有段：10.0.0.0/8 以 domain-config 不能直接写 CIDR，枚举 10.* 太广。
+             Android NSC 不支持 CIDR。为了覆盖 10.x / 172.16-31.x / 192.168.x 常见内网，
+             只能写具体 domain；此处提供占位，若用户局域网 One API 是明确 IP，可在此追加：
+             <domain includeSubdomains="true">192.168.1.100</domain>
+        -->
+    </domain-config>
+
+    <!-- 192.168.*.*  常见家用路由器网段：把 192.168.1.1-192.168.1.254 覆盖不到；
+         但大多数 One API 部署会固定使用单 IP，用户可自行追加。此处放 192.168.1.x
+         常见 4 个候选（路由器段、Hyper-V 默认段、VMware NAT），不覆盖所有可能。 -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">192.168.1.1</domain>
+        <domain includeSubdomains="false">192.168.1.100</domain>
+        <domain includeSubdomains="false">192.168.1.200</domain>
+        <domain includeSubdomains="false">192.168.0.10</domain>
+    </domain-config>
+</network-security-config>
