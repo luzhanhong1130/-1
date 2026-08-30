@@ -1,0 +1,40 @@
+node_modules/
+.DS_Store
+dist/
+build/
+.env
+.env.local
+*.log
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+.next/
+coverage/
+
+# Android / Gradle
+*.iml
+.gradle/
+local.properties
+captures/
+.cxx/
+
+# Keystore / 签名
+*.keystore
+*.jks
+!debug.keystore
+
+# 构建产物
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Native
+*.so
+
+# IDE
+*.swp
+
+# Profiler
+*.hprof

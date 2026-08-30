@@ -1,0 +1,1 @@
+INSERT INTO model_configs (name, provider, modelId, baseUrl, apiKeyRefId, temperature, maxTokens, priceInputPer1k, priceOutputPer1k, isDefault, billingEndpointKind) VALUES ('TestDeepSeek', 'DEEPSEEK', 'deepseek-chat', 'https://platform.deepseek.com', 1, 0.7, 2048, 0.001, 0.002, 1, 'DEEPSEEK');
