@@ -1,0 +1,166 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "3e5f72ad4b03e48fb3b1c2881c5ffddb",
+    "entities": [
+      {
+        "tableName": "chat_sessions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `title` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, `lastModelConfigId` INTEGER, PRIMARY KEY(`id`))",
+        "fields": [
+          {"fieldPath": "id", "columnName": "id", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "title", "columnName": "title", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "createdAt", "columnName": "createdAt", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "updatedAt", "columnName": "updatedAt", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "lastModelConfigId", "columnName": "lastModelConfigId", "affinity": "INTEGER", "notNull": false}
+        ],
+        "primaryKey": {"autoGenerate": false, "columnNames": ["id"]},
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "chat_messages",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `sessionId` TEXT NOT NULL, `role` TEXT NOT NULL, `content` TEXT NOT NULL, `timestamp` INTEGER NOT NULL, `modelConfigId` INTEGER, `inputTokens` INTEGER NOT NULL, `outputTokens` INTEGER NOT NULL, `error` TEXT, `isStreaming` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {"fieldPath": "id", "columnName": "id", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "sessionId", "columnName": "sessionId", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "role", "columnName": "role", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "content", "columnName": "content", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "timestamp", "columnName": "timestamp", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "modelConfigId", "columnName": "modelConfigId", "affinity": "INTEGER", "notNull": false},
+          {"fieldPath": "inputTokens", "columnName": "inputTokens", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "outputTokens", "columnName": "outputTokens", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "error", "columnName": "error", "affinity": "TEXT", "notNull": false},
+          {"fieldPath": "isStreaming", "columnName": "isStreaming", "affinity": "INTEGER", "notNull": true}
+        ],
+        "primaryKey": {"autoGenerate": false, "columnNames": ["id"]},
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "model_configs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `provider` TEXT NOT NULL, `modelId` TEXT NOT NULL, `baseUrl` TEXT NOT NULL, `apiKeyRefId` INTEGER NOT NULL, `temperature` REAL NOT NULL, `maxTokens` INTEGER NOT NULL, `priceInputPer1k` REAL NOT NULL, `priceOutputPer1k` REAL NOT NULL, `isDefault` INTEGER NOT NULL, `billingEndpointKind` TEXT NOT NULL)",
+        "fields": [
+          {"fieldPath": "id", "columnName": "id", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "name", "columnName": "name", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "provider", "columnName": "provider", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "modelId", "columnName": "modelId", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "baseUrl", "columnName": "baseUrl", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "apiKeyRefId", "columnName": "apiKeyRefId", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "temperature", "columnName": "temperature", "affinity": "REAL", "notNull": true},
+          {"fieldPath": "maxTokens", "columnName": "maxTokens", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "priceInputPer1k", "columnName": "priceInputPer1k", "affinity": "REAL", "notNull": true},
+          {"fieldPath": "priceOutputPer1k", "columnName": "priceOutputPer1k", "affinity": "REAL", "notNull": true},
+          {"fieldPath": "isDefault", "columnName": "isDefault", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "billingEndpointKind", "columnName": "billingEndpointKind", "affinity": "TEXT", "notNull": true}
+        ],
+        "primaryKey": {"autoGenerate": true, "columnNames": ["id"]},
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "api_keys",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `provider` TEXT NOT NULL, `createdAt` INTEGER NOT NULL)",
+        "fields": [
+          {"fieldPath": "id", "columnName": "id", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "name", "columnName": "name", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "provider", "columnName": "provider", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "createdAt", "columnName": "createdAt", "affinity": "INTEGER", "notNull": true}
+        ],
+        "primaryKey": {"autoGenerate": true, "columnNames": ["id"]},
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "usage_records",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sessionId` TEXT NOT NULL, `modelConfigId` INTEGER NOT NULL, `provider` TEXT NOT NULL, `timestamp` INTEGER NOT NULL, `inputTokens` INTEGER NOT NULL, `outputTokens` INTEGER NOT NULL, `estimatedCostYuan` REAL NOT NULL, `success` INTEGER NOT NULL, `latencyMs` INTEGER NOT NULL)",
+        "fields": [
+          {"fieldPath": "id", "columnName": "id", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "sessionId", "columnName": "sessionId", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "modelConfigId", "columnName": "modelConfigId", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "provider", "columnName": "provider", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "timestamp", "columnName": "timestamp", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "inputTokens", "columnName": "inputTokens", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "outputTokens", "columnName": "outputTokens", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "estimatedCostYuan", "columnName": "estimatedCostYuan", "affinity": "REAL", "notNull": true},
+          {"fieldPath": "success", "columnName": "success", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "latencyMs", "columnName": "latencyMs", "affinity": "INTEGER", "notNull": true}
+        ],
+        "primaryKey": {"autoGenerate": true, "columnNames": ["id"]},
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "remote_usage_snapshots",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `apiKeyRefId` INTEGER NOT NULL, `rangeStartMillis` INTEGER NOT NULL, `rangeEndMillis` INTEGER NOT NULL, `fetchedAtDayBucket` INTEGER NOT NULL, `fetchedAtMillis` INTEGER NOT NULL, `status` TEXT NOT NULL, `errorMessage` TEXT, `totalRequests` INTEGER NOT NULL, `totalInputTokens` INTEGER NOT NULL, `totalOutputTokens` INTEGER NOT NULL, `totalCostAmount` REAL NOT NULL, `totalCostCurrency` TEXT NOT NULL, `source` TEXT NOT NULL, `note` TEXT, FOREIGN KEY(`apiKeyRefId`) REFERENCES `api_keys`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {"fieldPath": "id", "columnName": "id", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "apiKeyRefId", "columnName": "apiKeyRefId", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "rangeStartMillis", "columnName": "rangeStartMillis", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "rangeEndMillis", "columnName": "rangeEndMillis", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "fetchedAtDayBucket", "columnName": "fetchedAtDayBucket", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "fetchedAtMillis", "columnName": "fetchedAtMillis", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "status", "columnName": "status", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "errorMessage", "columnName": "errorMessage", "affinity": "TEXT", "notNull": false},
+          {"fieldPath": "totalRequests", "columnName": "totalRequests", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "totalInputTokens", "columnName": "totalInputTokens", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "totalOutputTokens", "columnName": "totalOutputTokens", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "totalCostAmount", "columnName": "totalCostAmount", "affinity": "REAL", "notNull": true},
+          {"fieldPath": "totalCostCurrency", "columnName": "totalCostCurrency", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "source", "columnName": "source", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "note", "columnName": "note", "affinity": "TEXT", "notNull": false}
+        ],
+        "primaryKey": {"autoGenerate": true, "columnNames": ["id"]},
+        "indices": [{
+          "name": "index_remote_usage_snapshots_apiKeyRefId_fetchedAtDayBucket",
+          "unique": true,
+          "columnNames": ["apiKeyRefId", "fetchedAtDayBucket"],
+          "orders": [],
+          "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_remote_usage_snapshots_apiKeyRefId_fetchedAtDayBucket` ON `${TABLE_NAME}` (`apiKeyRefId`, `fetchedAtDayBucket`)"
+        }],
+        "foreignKeys": [{
+          "table": "api_keys",
+          "onDelete": "CASCADE",
+          "onUpdate": "NO ACTION",
+          "columns": ["apiKeyRefId"],
+          "referencedColumns": ["id"]
+        }]
+      },
+      {
+        "tableName": "remote_daily_points",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `snapshotId` INTEGER NOT NULL, `modelId` TEXT NOT NULL, `dateBucket` INTEGER NOT NULL, `requests` INTEGER NOT NULL, `inputTokens` INTEGER NOT NULL, `outputTokens` INTEGER NOT NULL, `costAmount` REAL NOT NULL, `costCurrency` TEXT NOT NULL, FOREIGN KEY(`snapshotId`) REFERENCES `remote_usage_snapshots`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {"fieldPath": "id", "columnName": "id", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "snapshotId", "columnName": "snapshotId", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "modelId", "columnName": "modelId", "affinity": "TEXT", "notNull": true},
+          {"fieldPath": "dateBucket", "columnName": "dateBucket", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "requests", "columnName": "requests", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "inputTokens", "columnName": "inputTokens", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "outputTokens", "columnName": "outputTokens", "affinity": "INTEGER", "notNull": true},
+          {"fieldPath": "costAmount", "columnName": "costAmount", "affinity": "REAL", "notNull": true},
+          {"fieldPath": "costCurrency", "columnName": "costCurrency", "affinity": "TEXT", "notNull": true}
+        ],
+        "primaryKey": {"autoGenerate": true, "columnNames": ["id"]},
+        "indices": [{
+          "name": "index_remote_daily_points_snapshotId_dateBucket_modelId",
+          "unique": true,
+          "columnNames": ["snapshotId", "dateBucket", "modelId"],
+          "orders": [],
+          "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_remote_daily_points_snapshotId_dateBucket_modelId` ON `${TABLE_NAME}` (`snapshotId`, `dateBucket`, `modelId`)"
+        }],
+        "foreignKeys": [{
+          "table": "remote_usage_snapshots",
+          "onDelete": "CASCADE",
+          "onUpdate": "NO ACTION",
+          "columns": ["snapshotId"],
+          "referencedColumns": ["id"]
+        }]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3e5f72ad4b03e48fb3b1c2881c5ffddb')"
+    ]
+  }
+}
